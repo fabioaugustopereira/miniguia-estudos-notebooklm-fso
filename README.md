@@ -24,7 +24,7 @@ Isaac Nape   1,6, Keshaan Singh1,6, Asher Klug1, Wagner Buono   1, Carme
 
 ## Testes de Prompts
 
-**Prompt:**
+**Prompt - 01:**
 
 > Crie um resumo técnico, detalhado e assertivo sobre o tema de pesquisa em telecomunicações apresentado nos documentos fornecidos, com foco em sistemas de comunicação óptica em espaço livre (Free Space Optics – FSO).
 >
@@ -102,6 +102,13 @@ Isaac Nape   1,6, Keshaan Singh1,6, Asher Klug1, Wagner Buono   1, Carme
 > * Faça conexões entre teoria, simulação e aplicações reais;
 > * Evite respostas superficiais ou genéricas;
 > * Gere ao final um “Resumo Executivo” com os principais pontos da pesquisa em tópicos objetivos.
+>
+> 
+**Prompt - 02:**
+> * Como a multiplexação por modos HG supera a dos modos OAM?
+>
+**Prompt - 03:**
+> * Como o sistema RF/FSO híbrido garante resiliência sob neblina?
 
 
 ## Miniguia - Resultados
@@ -182,3 +189,58 @@ A tecnologia FSO evoluiu de sistemas experimentais para soluções comerciais ma
 *   **Inovação Chave:** Uso de **Luz Estruturada (OAM/Vetorial)** para multiplexação massiva e descoberta de que a **não-separabilidade vetorial** é invariante sob turbulência em canais unitários.
 *   **Soluções de Resiliência:** Sistemas **híbridos FSO/RF** e algoritmos de **óptica adaptativa baseados em Machine Learning**.
 *   **Futuro:** Integração profunda com **redes 6G NTN**, uso de UAVs como *relays* inteligentes e transferência de energia via laser (**SLIPT**).
+
+
+Como a multiplexação por modos HG supera a dos modos OAM?
+
+*   A multiplexação por modos **Hermite-Gauss (HG)** supera a dos modos de **Momento Angular Orbital (OAM)**, baseados em modos Laguerre-Gauss (LG), principalmente devido à sua **superior resiliência a efeitos de turbulência atmosférica**, como o desvio do feixe (*beam wander*) e deslocamentos laterais, em virtude de sua **simetria cartesiana**.
+
+Embora os modos OAM sejam uma escolha popular para multiplexação por divisão de modo (MDM) devido à sua ortogonalidade teórica, a pesquisa indica que os modos HG apresentam vantagens técnicas decisivas em cenários reais:
+
+### 1. Resiliência a Deslocamentos Laterais e Tip/Tilt
+A principal limitação dos modos OAM em canais de espaço livre é a sensibilidade a aberrações de baixa ordem impostas pela turbulência, especificamente o **tip e tilt**. Estas aberrações resultam em deslocamentos laterais do feixe no plano do receptor. 
+*   **Modos OAM:** São altamente sensíveis a desalinhamentos. Mesmo pequenos deslocamentos laterais destroem a fase azimutal do feixe, causando um decaimento rápido da carga topológica e alto **crosstalk** (interferência) entre canais adjacentes.
+*   **Modos HG:** Devido à sua **simetria cartesiana**, os modos HG de ordem inferior são significativamente mais invariantes a esses deslocamentos. Experimentos demonstram que, em regimes de turbulência forte, os modos HG exibem níveis de crosstalk substancialmente menores do que os modos LG (OAM).
+
+### 2. Preservação da Ortogonalidade sob Turbulência
+A turbulência atmosférica atua como um canal que "espalha" a potência de um modo para outros modos vizinhos (scattering modal).
+*   Estudos comparativos mostram que, sob a mesma força de turbulência (quantificada pela Razão de Strehl), os modos HG mantêm sua estrutura e ortogonalidade de forma mais robusta.
+*   Enquanto o padrão de vórtice dos modos OAM tende a desaparecer e evoluir para um ponto gaussiano circular sob turbulência severa, os modos HG preservam melhor sua morfologia espacial.
+
+### 3. Modos HG como "Base Ajustada" (Adjusted Basis)
+Pesquisas recentes sobre a invariância de luz vetorial demonstraram que, quando um feixe OAM passa por sistemas altamente aberrados (como uma lente inclinada), o canal mapeia os modos de entrada para uma nova base ajustada para manter a "vetorialidade".
+*   Em certos casos de simetria de canal, a **base ajustada** resultante para recuperar a informação de forma livre de crosstalk é composta justamente por modos **Hermite-Gauss**. Isso sugere que os modos HG são, em muitos aspectos, uma base mais "natural" ou estável para lidar com aberrações ópticas comuns.
+
+### 4. Considerações sobre Capacidade e Abertura
+Apesar da superioridade em robustez, existe um *trade-off*:
+*   **Geometria da Abertura:** Como a maioria dos sistemas ópticos possui aberturas circulares, os modos LG (OAM) podem apresentar uma eficiência de empacotamento de energia ligeiramente superior em sistemas **perfeitamente alinhados**. No entanto, essa vantagem teórica é rapidamente anulada em links reais de longo alcance, onde o desalinhamento e a turbulência são inevitáveis.
+*   **Diversidade Modal:** A combinação de ambas as bases (HG e LG) tem sido explorada para obter **ganho de diversidade**, permitindo que sistemas FSO sejam mais compactos e resilientes a desvanecimento independentes, mesmo usando o mesmo tamanho de abertura.
+
+Em resumo, a multiplexação por modos HG é tecnicamente preferível para comunicações FSO em canais turbulentos porque sua simetria cartesiana mitiga o crosstalk induzido por deslocamentos do feixe, garantindo uma transmissão de dados com maior fidelidade e menor taxa de erro de bit (BER) em condições atmosféricas adversas.
+
+
+Como o sistema RF/FSO híbrido garante resiliência sob neblina?
+
+O sistema **RF/FSO híbrido** garante resiliência sob condições de neblina ao utilizar a **redundância complementar** entre as radiofrequências (especificamente as ondas milimétricas ou mmWave) e os links ópticos em espaço livre. 
+
+O funcionamento e a eficácia dessa arquitetura baseiam-se nos seguintes mecanismos técnicos detalhados nas fontes:
+
+### 1. Mecanismo de Failover e Redundância
+A neblina é o fator mais limitante para a tecnologia FSO, pois as partículas de água dispersam e bloqueiam os feixes de laser, causando atenuações severas que variam de **10 a 100 dB/km**.
+*   **Backup RF:** Em sistemas híbridos, um link de rádio opera em paralelo ao link óptico. Quando o canal FSO sofre um desvanecimento profundo (*deep fade*) devido à neblina intensa, o sistema alterna automaticamente para o link de RF.
+*   **Manutenção da Conectividade:** Embora o link de RF geralmente ofereça uma taxa de dados inferior à do FSO (que pode atingir Gbps ou Tbps), ele garante que o serviço de rede não seja interrompido. Em situações extremas, a velocidade pode cair para uma fração da original (ex: 1/20), mas a conectividade permanece ativa.
+
+### 2. Diferenças Físicas na Propagação
+A resiliência advém do fato de que a neblina e a chuva afetam as frequências ópticas e de rádio de maneiras distintas:
+*   **FSO vs. Neblina:** O comprimento de onda do laser é comparável ao tamanho das gotículas de neblina, resultando em espalhamento máximo do sinal.
+*   **RF vs. Neblina:** As ondas de rádio possuem comprimentos de onda muito maiores, sendo significativamente menos afetadas pelo espalhamento induzido pela neblina, o que as torna ideais como "caminho de reserva" durante eventos climáticos adversos.
+
+### 3. Impacto na Disponibilidade do Link (Carrier-Class)
+A integração híbrida é o que permite que a tecnologia FSO atinja níveis de confiabilidade exigidos por operadoras de telecomunicações (*carrier-class*):
+*   **Aumento da Disponibilidade:** Estudos de caso reais, como o projeto na Ilha Shara, demonstraram que um link FSO isolado tinha uma disponibilidade de **99,8%**. Com a adição de um backup de RF, essa disponibilidade subiu para **99,999%** (os chamados "cinco noves"), atendendo aos rigorosos requisitos comerciais.
+*   **Soluções Comerciais:** Exemplos como o **CableFree UNITY** e as unidades da **LightPointe** combinam FSO com ondas milimétricas especificamente para estender a distância e a disponibilidade em cenários onde o clima é instável.
+
+### 4. Monitoramento e Controle Automático
+Sistemas avançados incorporam o **Controle Automático de Ganho (AGC)** e o **Controle Automático de Potência de Transmissão (ATPC)**. Eles monitoram constantemente a qualidade do link óptico; à medida que a neblina começa a densificar, a potência do laser pode ser aumentada até o limite de segurança ocular (Classe 1M) antes da transição definitiva para o link de RF de backup.
+
+Em suma, a resiliência não é obtida "vencendo" a neblina com o laser, mas sim integrando uma **camada de rádio robusta** que assume a transmissão quando a transparência atmosférica é perdida.
