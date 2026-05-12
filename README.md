@@ -23,9 +23,6 @@ Revealing the invariance of vectorial structured light in complex media
 Isaac Nape   1,6, Keshaan Singh1,6, Asher Klug1, Wagner Buono   1, Carmelo Rosales-Guzman2,3, Amy McWilliam4, Sonja Franke-Arnold   4, Ané Kritzinger1,5, Patricia Forbes   5, Angela Dudley1 and Andrew Forbes   1 ✉ - https://doi.org/10.1038/s41566-022-01023-w
 
 ## Testes de Prompts
-Use este prompt no [NotebookLM](https://notebooklm.google.com?utm_source=chatgpt.com) para gerar um resumo técnico, aprofundado e bem estruturado sobre um tema de pesquisa em telecomunicações envolvendo Free Space Optics (FSO):
-
----
 
 **Prompt:**
 
